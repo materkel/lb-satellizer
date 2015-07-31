@@ -37,7 +37,7 @@ module.exports = function enableAuthentication(server) {
 ...
   // Use Satellizer for authetication
   satellizer(server, satellizerConfig);
-  satellizer.setProvider(facebook, 'facebook');
+  satellizer.addProvider(facebook, 'facebook');
 };
 
 ```
@@ -84,8 +84,8 @@ Finally, add the respective properties and acls for the supported remote methods
 ## Routes:
 lb-satellizer exposes following routes via remote methods:
 
-auth: **POST** /users/auth/{provider}  
-link: **PUT** /users/{id}/auth/{provider}  
+auth: **POST** /users/auth/{provider}
+link: **PUT** /users/{id}/auth/{provider}
 unlink: **DELETE** /users/{id}/auth/{provider}
 
 ## Future plans:
