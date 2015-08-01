@@ -5,7 +5,8 @@ The purpose of this module is to set up remote methods to authenticate (login), 
 
 ### Supported Providers:
 
-- **Facebook** ( [lb-satellizer-facebook](https://github.com/mfressdorf/lb-satellizer-facebook) )
+- **Facebook** ( [lb-satellizer-facebook](https://github.com/mfressdorf/lb-satellizer-facebook) )  
+- **Twitter** ( [lb-satellizer-twitter](https://github.com/mfressdorf/lb-satellizer-twitter) )
 
 ## Setup:
 
@@ -31,13 +32,15 @@ Then in your server/boot/authentication.js, or any other bootfile add:
 ```javascript
 var satellizer = require('lb-satellizer');
 var facebook = require('lb-satellizer-facebook');
+var twitter = require('lb-satellizer-twitter');
 var satellizerConfig = require('../config.json').satellizer;
 
 module.exports = function enableAuthentication(server) {
 ...
+  var providers = [{provider: facebook, name: 'facebook'},
+  				   {provider: twitter, name: 'twitter'}]
   // Use Satellizer for authetication
-  satellizer(server, satellizerConfig);
-  satellizer.addProvider(facebook, 'facebook');
+  satellizer(server, providers, satellizerConfig);
 };
 
 ```
@@ -84,9 +87,18 @@ Finally, add the respective properties and acls for the supported remote methods
 ## Routes:
 lb-satellizer exposes following routes via remote methods:
 
-auth: **POST** /users/auth/{provider}
-link: **PUT** /users/{id}/auth/{provider}
-unlink: **DELETE** /users/{id}/auth/{provider}
+- auth: **POST** /users/auth/{provider}  
+- link: **PUT** /users/{id}/auth/{provider}  
+- unlink: **DELETE** /users/{id}/auth/{provider} 
+
+## Changelog:
+
+**1.1.0** :
+
+- Add OAuth1 support (Twitter)  
+- Support multiple providers via Array (see setup)
+- Add routes description with supported providers
+
 
 ## Future plans:
 

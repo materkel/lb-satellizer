@@ -6,17 +6,10 @@
 var hookUserMethods = require('./lib/user');
 var addProvider = require('./lib/provider').addProvider;
 
-module.exports = function(app, config) {
+module.exports = function(app, providers, config) {
   var User = app.models[config.userModel];
-  hookUserMethods(User, config);
-};
-
-module.exports.addProvider = function(provider, name) {
-  addProvider(provider, name);
-};
-
-module.exports.addProviders = function(providers) {
   providers.map(function(provider) {
     addProvider(provider.provider, provider.name);
   });
+  hookUserMethods(User, config);
 };
