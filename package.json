@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Loopback Module for Token Based 3rd Party (Oauth) Authentication with satellizer",
   "author": "Matthias Freßdorf <mfressdorf@gmail.com> (http://mfressdorf.de)",
-  "license": "MIT",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -20,7 +19,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git://github.com:mfressdorf/lb-satellizer.git"
+  },
+  "licenses": {
+    "type": "MIT",
+    "url": "https://github.com/mfressdorf/lb-satellizer/blob/master/LICENSE.md"
   },
   "dependencies": {
     "bluebird": "^2.9.34",
