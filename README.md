@@ -30,15 +30,15 @@ In your server/config.json, add the name of your User model and all provider spe
 Then in your server/boot/authentication.js, or any other bootfile add:
 
 ```javascript
-var satellizer = require('lb-satellizer');
-var facebook = require('lb-satellizer-facebook');
-var twitter = require('lb-satellizer-twitter');
-var satellizerConfig = require('../config.json').satellizer;
+const satellizer = require('lb-satellizer');
+const facebook = require('lb-satellizer-facebook');
+const twitter = require('lb-satellizer-twitter');
+const satellizerConfig = require('../config.json').satellizer;
 
 module.exports = function enableAuthentication(server) {
 ...
-  var providers = [{provider: facebook, name: 'facebook'},
-  				   {provider: twitter, name: 'twitter'}]
+  const providers = [{provider: facebook, name: 'facebook'},
+  				           {provider: twitter, name: 'twitter'}]
   // Use Satellizer for authetication
   satellizer(server, providers, satellizerConfig);
 };
@@ -64,14 +64,7 @@ Finally, add the respective properties and acls for the supported remote methods
     {
       "accessType": "EXECUTE",
       "principalType": "ROLE",
-      "principalId": "$owner",
-      "permission": "ALLOW",
-      "property": "link"
-    },
-    {
-      "accessType": "EXECUTE",
-      "principalType": "ROLE",
-      "principalId": "$owner",
+      "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "unlink"
     },
@@ -84,14 +77,41 @@ Finally, add the respective properties and acls for the supported remote methods
     }
   ]
 ```
+
+## Satellizer Integration:
+
+To use lb-satellizer with [angular satellizer](https://github.com/sahat/satellizer), add the following parameters to your angular config
+
+```javascript
+.config(['satellizer.config', '$authProvider', function (config, $authProvider) {
+
+    config.unlinkUrl = 'api/users/auth/unlink/';
+
+    $authProvider.facebook({
+      url: 'api/users/auth/facebook',
+      clientId: 'your_facebook_client_id'
+    });
+
+    $authProvider.twitter({
+      url: 'api/users/auth/twitter'
+    });
+
+}])
+```
+
 ## Routes:
 lb-satellizer exposes following routes via remote methods:
 
 - auth: **POST** /users/auth/{provider}
-- link: **PUT** /users/{id}/auth/{provider}
-- unlink: **DELETE** /users/{id}/auth/{provider}
+- unlink: **GET** /users/auth/unlink/{provider}
 
 ## Changelog:
+
+**2.0.0** :
+
+- Upgraded to use ES6 with Node Version 5.5.0
+- Former link method is now merged with User.auth, this means better compatibility with Satellizer. Linking of a provider with an existing user account is now performed if the method is called with a valid accesstoken.
+- Improved Code Documentation
 
 **1.2.1** :
 
