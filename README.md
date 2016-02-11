@@ -30,17 +30,18 @@ In your server/config.json, add the name of your User model and all provider spe
 Then in your server/boot/authentication.js, or any other bootfile add:
 
 ```javascript
-const satellizer = require('lb-satellizer');
-const facebook = require('lb-satellizer-facebook');
-const twitter = require('lb-satellizer-twitter');
-const satellizerConfig = require('../config.json').satellizer;
+const loopback = require('loopback');
+      satellizer = require('lb-satellizer');
+      facebook = require('lb-satellizer-facebook');
+      twitter = require('lb-satellizer-twitter');
+      satellizerConfig = require('../config.json').satellizer;
 
 module.exports = function enableAuthentication(server) {
 ...
   const providers = [{provider: facebook, name: 'facebook'},
   				           {provider: twitter, name: 'twitter'}]
   // Use Satellizer for authetication
-  satellizer(server, providers, satellizerConfig);
+  satellizer(server, providers, satellizerConfig, loopback);
 };
 
 ```
