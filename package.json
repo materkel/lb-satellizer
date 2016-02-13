@@ -1,6 +1,6 @@
 {
   "name": "lb-satellizer",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Loopback Module for Token Based 3rd Party (Oauth) Authentication with satellizer",
   "author": "Matthias Freßdorf <mfressdorf@gmail.com> (http://mfressdorf.de)",
   "main": "index.js",
