@@ -1,5 +1,7 @@
 # lb-satellizer
 
+** !!! This Module is under development and should not be used in production !!! **
+
 lb-satellizer integrates 3rd party (facebook, twitter, etc.) authentication for [loopback](https://github.com/strongloop/loopback).
 The purpose of this module is to set up remote methods to authenticate (login), link and unlink with multiple social media providers.
 
@@ -107,6 +109,9 @@ lb-satellizer exposes following routes via remote methods:
 - unlink: **GET** /users/auth/unlink/{provider}
 
 ## Changelog:
+
+**2.2.0** :
+- Fixed a major Bug which, in combination with the FB Graph API v2.5, did overwrite random user profiles
 
 **2.0.0** :
 
