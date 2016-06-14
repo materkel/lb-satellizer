@@ -3,7 +3,7 @@
 ** !!! This Module is under development and should not be used in production !!! **
 
 lb-satellizer integrates 3rd party (facebook, twitter, etc.) authentication for [loopback](https://github.com/strongloop/loopback).
-The purpose of this module is to set up remote methods to authenticate (login), link and unlink with multiple social media providers.
+The purpose of this module is to set up remote methods for authentication (login), linking and unlinking of multiple social media providers.
 
 ### Supported Providers:
 
@@ -33,10 +33,10 @@ Then in your server/boot/authentication.js, or any other bootfile add:
 
 ```javascript
 const loopback = require('loopback');
-      satellizer = require('lb-satellizer');
-      facebook = require('lb-satellizer-facebook');
-      twitter = require('lb-satellizer-twitter');
-      satellizerConfig = require('../config.json').satellizer;
+const satellizer = require('lb-satellizer');
+const facebook = require('lb-satellizer-facebook');
+const twitter = require('lb-satellizer-twitter');
+const satellizerConfig = require('../config.json').satellizer;
 
 module.exports = function enableAuthentication(server) {
 ...
@@ -107,29 +107,6 @@ lb-satellizer exposes following routes via remote methods:
 
 - auth: **POST** /users/auth/{provider}
 - unlink: **GET** /users/auth/unlink/{provider}
-
-## Changelog:
-
-**2.2.0** :
-- Fixed a major Bug which, in combination with the FB Graph API v2.5, did overwrite random user profiles
-
-**2.0.0** :
-
-- Upgraded to use ES6 with Node Version 5.5.0
-- Former link method is now merged with User.auth, this means better compatibility with Satellizer. Linking of a provider with an existing user account is now performed if the method is called with a valid accesstoken.
-- Improved Code Documentation
-
-**1.2.1** :
-
-- Fix major user check Bug that prevented generation of new users
-- Add missing link functionality for oauth
-
-**1.1.0** :
-
-- Add OAuth1 support (Twitter)
-- Support multiple providers via Array (see setup)
-- Add routes description with supported providers
-
 
 ## Future plans:
 
