@@ -7,13 +7,15 @@ The purpose of this module is to set up remote methods for authentication (login
 
 ### Supported Providers:
 
-- **Facebook** ( [lb-satellizer-facebook](https://github.com/mfressdorf/lb-satellizer-facebook) )
+- **Facebook** ( [lb-satellizer-facebook](https://github.com/mfressdorf/lb-satellizer-facebook) )  
 - **Twitter** ( [lb-satellizer-twitter](https://github.com/mfressdorf/lb-satellizer-twitter) )
 
 ## Setup:
 
-```$npm install lb-satellizer --save```
-```$npm install lb-satellizer-facebook --save```
+```bash
+$ npm install lb-satellizer --save  
+$ npm install lb-satellizer-facebook --save
+```
 
 In your server/config.json, add the name of your User model and all provider specific data:
 
