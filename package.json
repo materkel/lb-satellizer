@@ -26,6 +26,6 @@
     "url": "https://github.com/mfressdorf/lb-satellizer/blob/master/LICENSE.md"
   },
   "dependencies": {
-    "password-generator": "^1.0.0"
+    "password-generator": "^2.2.0"
   }
 }
